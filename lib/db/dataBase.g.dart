@@ -17,11 +17,11 @@ class StudentModelAdapter extends TypeAdapter<StudentModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return StudentModel(
-      name: fields[1] as dynamic,
-      age: fields[2] as dynamic,
-      reg: fields[3] as dynamic,
-      std: fields[4] as dynamic,
-      img: fields[5] as String,
+      name: fields[1] as String,
+      age: fields[2] as String,
+      reg: fields[3] as String,
+      std: fields[4] as String,
+      img: fields[5] as String?,
       key: fields[0] as int?,
     );
   }

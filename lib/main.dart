@@ -1,18 +1,14 @@
-import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:sample/db/dataBase.dart';
-import 'package:sample/splashscreen.dart';
+import 'package:sample/exports/exports.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  final controller=Get.put(StudentDataController());
   final document = await getApplicationDocumentsDirectory();
   await Hive.initFlutter(document.path);
   if (!Hive.isAdapterRegistered(StudentModelAdapter().typeId)) {
     Hive.registerAdapter(StudentModelAdapter());
   }
-  // final studentDB = await Hive.openBox<StudentModel>('studentDB');
-  await getallstudents();
+  await controller.getdata();
   runApp(const Myapp());
 }
 
@@ -26,7 +22,7 @@ class Myapp extends StatefulWidget {
 class _MyappState extends State<Myapp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       theme: ThemeData(backgroundColor: Colors.black,fontFamily: 'RobotoMono'),
       debugShowCheckedModeBanner: false,
       home:const SplashScreen(),
