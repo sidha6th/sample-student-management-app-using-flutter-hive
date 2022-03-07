@@ -30,9 +30,11 @@ class AppBarWidget extends StatelessWidget {
           child: isAddpage == false
               ? IconButton(
                   onPressed: () => {
-                     searchController.searchData.clear(),
-                    searchController.searchData
-                        .addAll(searchController.datacontroler),
+                    searchController.searchData.clear(),
+                    searchController.searchData.value = [
+                      ...searchController.datacontroler
+                    ],
+                    // .addAll(searchController.datacontroler),
                     Get.to(
                       Searchpage(),
                     ),

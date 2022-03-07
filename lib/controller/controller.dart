@@ -139,4 +139,6 @@ class StudentDataController extends GetxController {
       ),
     );
   }
+//============================= navigation ===============================//
+
 }

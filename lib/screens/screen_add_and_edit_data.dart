@@ -1,10 +1,7 @@
 import 'package:sample/exports/exports.dart';
-import 'dart:io';
-
-File? sutdentimagepath;
 
 class AddStudents extends StatelessWidget {
-  const AddStudents({Key? key, this.value, required this.isadd})
+  const AddStudents({Key? key,this.value, required this.isadd})
       : super(key: key);
   final bool isadd;
   final StudentModel? value;
@@ -13,14 +10,6 @@ class AddStudents extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     final controller = Get.find<StudentDataController>();
-
-    if (value != null) {
-      controller.name.text = value!.name;
-      controller.age.text = value!.age;
-      controller.reg.text = value!.reg;
-      controller.std.text = value!.std;
-      value?.img != null ? controller.tempimg = value!.img! : '';
-    }
 
     return Scaffold(
       appBar: PreferredSize(
@@ -73,6 +62,7 @@ class AddStudents extends StatelessWidget {
               ),
             ),
             Textfield(
+              data: value?.name,
               isnumber: false,
               hindText: 'Student Name',
               textcontroller: controller.name,
@@ -81,6 +71,7 @@ class AddStudents extends StatelessWidget {
               height: 10,
             ),
             Textfield(
+              data: value?.reg,
               isnumber: true,
               textcontroller: controller.reg,
               hindText: 'Reg No.',
@@ -89,6 +80,7 @@ class AddStudents extends StatelessWidget {
               height: 10,
             ),
             Textfield(
+              data: value?.age,
               isnumber: true,
               textcontroller: controller.age,
               hindText: 'Age',
@@ -97,6 +89,7 @@ class AddStudents extends StatelessWidget {
               height: 10,
             ),
             Textfield(
+              data: value?.std,
               isnumber: true,
               textcontroller: controller.std,
               hindText: 'Class',
